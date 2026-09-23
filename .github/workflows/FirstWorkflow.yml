@@ -5,7 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: My_First_Step
-        run: echo "this is my first step!"
+        run: |
+          echo "this is my first step!"
+          pwd
+          ls -l
+          echo "END!"
       - name: my_Second_Step
         run: echo "My seconf step!"
 
