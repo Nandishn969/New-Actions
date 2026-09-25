@@ -14,7 +14,6 @@ jobs:
         run: echo "My seconf step!"
 
   my_Second_job:
-    needs: My_First_Job
     runs-on: ubuntu-latest
     steps:
       - name: second job first step
