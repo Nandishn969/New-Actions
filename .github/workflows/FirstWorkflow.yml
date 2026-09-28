@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: test
-          path: test
+          path: test.txt
