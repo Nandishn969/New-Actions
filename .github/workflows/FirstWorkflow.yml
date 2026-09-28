@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: second job first step
         run: |
-          echo "second job first step!"
+          echo "second job first step!" >> test.txt
           echo "${{toJson(github)}}"
 
       - name: second job second step
