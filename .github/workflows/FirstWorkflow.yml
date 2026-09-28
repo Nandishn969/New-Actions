@@ -24,3 +24,9 @@ jobs:
 
       - name: second job second step
         run: echo "second job second step!"
+
+      - name: upload artifacts
+        uses: actions\upload-artifact@v3
+        with:
+          name: test
+          path: test
