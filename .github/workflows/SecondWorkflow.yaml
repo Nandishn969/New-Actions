@@ -1,0 +1,31 @@
+name: Second workflow
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+  push:
+  workflow_dispatch:
+jobs:
+  First_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: | 
+          echo "anoedh" >> test.txt
+          ehco "ekfhgw" > test.txt
+
+      - name: second step
+        uses: actions/upload-artifacts@v7
+        with:
+          name: test
+          path: test.txt
+  second_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-artifacts@v7
+        with:
+          path: test.txt
+      - name: echo test file
+        run: ehco test.txt
