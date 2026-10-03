@@ -1,0 +1,35 @@
+name: Third Worfklow
+on: 
+  pull_request:
+    types: [opened, closed]
+  workflow_dispatch: 
+
+jobs:
+  First_Job:
+    runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{ steps.id.outputs.script-file }}
+    steps:
+      - name: some name
+        run: echo "some value" > test.txt
+
+      - name: checkout
+        uses: actions/checkout@v7
+      - name: upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+            name: artifact
+            path: test.txt
+      - name: outputs
+        id: id
+        run: echo "script-file=outputs" >> $GITHUB_OUTPUT ';'
+
+  Second_job:
+    needs: First_Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: get output from first job
+        run: echo "${{ needs.First_Job.outputs.script-file }}"
+
+      - name: end of the workflow
+        run: echo "end of the workflow"
