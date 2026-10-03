@@ -1,0 +1,44 @@
+name: Fourth Workflow
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  pull_request:
+    types: 
+     - opened
+     - closed
+    branches:
+     - main
+jobs: 
+  Default_Job:
+    runs-on: ubuntu-latest
+    outputs:
+      value: ${{ steps.id.outputs.value }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+      - name: Run script
+        run: |
+          echo "Running a script" >> test.txt
+          echo "appending this line" >> test.txt
+      - name: upload test.txt
+        uses: actions/upload-artifact@v7
+        with:
+          name: test file
+          path: test.txt
+      - name: output the value
+        id: id
+        run: echo "Test" "value={}" >> $GITHUB_OUTOUT ;
+
+  Second_Job:
+    needs: Default_Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: test file
+      - name: echo test file
+        run: echo test.txt
+        
