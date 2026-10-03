@@ -29,7 +29,7 @@ jobs:
           path: test.txt
       - name: output the value
         id: id
-        run: echo "Test" "value={}" >> $GITHUB_OUTOUT ;
+        run: echo "value=Test" >> $GITHUB_OUTPUT 
 
   Second_Job:
     needs: Default_Job
