@@ -40,5 +40,7 @@ jobs:
         with:
           name: test file
       - name: echo test file
-        run: echo test.txt
+        run: echo $test.txt
+      - name: echo the output
+        run: echo "${{ needs.Default_Job.outputs.value }}"
         
