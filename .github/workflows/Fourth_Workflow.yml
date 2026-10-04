@@ -10,6 +10,8 @@ on:
      - closed
     branches:
      - main
+env:
+  name: Nandish
 jobs: 
   Default_Job:
     runs-on: ubuntu-latest
