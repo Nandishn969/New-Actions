@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "Running a script" >> test.txt
           echo "appending this line" >> test.txt
+          echo "${{ vars.name }}"
       - name: upload test.txt
         uses: actions/upload-artifact@v7
         with:
