@@ -25,7 +25,7 @@ jobs:
       id: abc
       run: |
         echo "${{ env.name }} and ${{ env.password }}" >> test.txt
-        echo "$Script=${{ env.name }} and ${{ env.password }}" >> $GITHUB_OUTPUT
+        echo "Script=${{ env.name }} and ${{ env.password }}" >> $GITHUB_OUTPUT
     - name: upload artifact
       if: failure() && steps.abc.outcome == 'failure'
       uses: actions/upload-artifact@v7
