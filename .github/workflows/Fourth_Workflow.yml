@@ -28,7 +28,7 @@ jobs:
         echo "$Script=${{ env.name }} and ${{ env.password }}" >> $GITHUB_OUTPUT
     - name: upload artifact
       if: failure() && steps.abc.outcome == 'failure'
-      uses: actions/upload_artifact@v7
+      uses: actions/upload-artifact@v7
       with:
         name: test
         path: test.txt
@@ -41,7 +41,7 @@ jobs:
         run: echo "${{ needs.default_job.outputs }}"
 
       - name: download artifact
-        uses: actions/download_artifact@v7
+        uses: actions/download-artifact@v7
         with:
           name: test
 
