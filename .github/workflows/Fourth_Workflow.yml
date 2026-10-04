@@ -14,6 +14,8 @@ env:
   name: Nandish
 jobs: 
   Default_Job:
+    env:
+      name: Nandish_Kaminal
     runs-on: ubuntu-latest
     outputs:
       value: ${{ steps.id.outputs.value }}
