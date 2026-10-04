@@ -17,7 +17,7 @@ jobs:
   default_job:
     runs-on: ubuntu-latest
     outputs:
-      name:  ${{ steps.abc.outputs }}
+      name:  ${{ steps.abc.outputs.Script }}
     steps: 
     - name: checkout
       uses: actions/checkout@v7
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: output
-        run: echo "${{ needs.default_job.outputs }}"
+        run: echo "${{ needs.default_job.outputs.name }}"
 
       - name: download artifact
         uses: actions/download-artifact@v7
