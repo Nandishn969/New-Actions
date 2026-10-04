@@ -26,6 +26,7 @@ jobs:
           echo "appending this line" >> test.txt
           echo "${{ vars.name }}"
           echo "${{ env.name }}"
+          echo "${{ secrets.SECRET }}"
       - name: upload test.txt
         uses: actions/upload-artifact@v7
         with:
