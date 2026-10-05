@@ -15,7 +15,11 @@ env:
 
 jobs:
   default_job:
-    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.operating-system }}
     outputs:
       name:  ${{ steps.abc.outputs.Script }}
     steps: 
