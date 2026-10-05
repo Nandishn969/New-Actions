@@ -19,6 +19,8 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, windows-latest]
+        exclude:
+          - operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     outputs:
       name:  ${{ steps.abc.outputs.Script }}
